@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+int rollno;
+struct node *link;
+};
+struct node* addbeg(struct node*);
+void print(struct node*);
+int main()
+{
+struct node *head=NULL;
+int choice;
+while(1)
+{
+printf("1.addbeg 2.print 3.exit\n");
+printf("enter ur choice\n");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:head=addbeg(head);
+       break;
+case 2:print(head);
+        break;
+case 3:exit(0);
+        default :printf("invalid choice\n");
+        }
+        }
+        }
+struct node* addbeg(struct node *ptr)
+        {
+        struct node *newnode=NULL,*prev=NULL,*cur=NULL;
+        newnode=(struct node*)calloc(1,sizeof(struct node));
+        if(newnode==NULL)
+        printf("node not created\n");
+        else
+        {
+        printf("enter roll no\n");
+        scanf("%d",&newnode->rollno);
+        newnode->link=ptr;
+        ptr=newnode;
+        }
+        return ptr;
+        }
+        
+ void print(struct node *ptr)
+        {
+        struct node *temp=NULL;
+        temp=ptr;
+        if(ptr==NULL)
+        printf("sll is empty\n");
+        else
+        {
+        while(temp)
+        {
+        printf("%d\n",temp->rollno);
+        temp=temp->link;
+        }
+        }
+        }
+        
